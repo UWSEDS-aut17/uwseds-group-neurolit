@@ -10,8 +10,8 @@ MEG neuro-imaging dataset - magnetoencepholography data collected from dylexic a
 
 Evaluations:
 
-||Reading dataset|Survey Dataset|MEG datset|
-||---|---|---|
+|Requirements|Reading dataset|Survey Dataset|MEG datset|
+|---|---|---|---|
 |quantitative reading skills eval|[X]|[X]|[X]|
 |qualitative survey responses|[X]|[X]|[X]|
 |neuroimaging data|[X]|[X]|[X]|
