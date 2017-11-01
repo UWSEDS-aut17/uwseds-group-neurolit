@@ -7,6 +7,7 @@ Data is stored in a UW accessible repository via
 ![RedCap](https://github.com/UWSEDS-aut17/uwseds-group-neurolit/blob/master/Images/redcap-logo-medium.png)
 
 Data was collected by researchers at the [Institute for Learning & Brain Sciences](http://ilabs.washington.edu/) as part of the
+
 ![UW RDRP](https://github.com/UWSEDS-aut17/uwseds-group-neurolit/blob/master/Images/uw_rdrp_660.png)
 
 
