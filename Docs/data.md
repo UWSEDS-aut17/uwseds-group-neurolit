@@ -12,6 +12,6 @@ Evaluations:
 
 |Requirements|Reading dataset|Survey Dataset|MEG datset|
 |---|---|---|---|
-|quantitative reading skills eval|[X]|[X]|[X]|
-|qualitative survey responses|[X]|[X]|[X]|
-|neuroimaging data|[X]|[X]|[X]|
+|quantitative reading skills eval|- [X]||- [X]|
+|qualitative survey responses||- [X]||
+|neuroimaging data|||- [X]|
