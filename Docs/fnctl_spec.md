@@ -1,22 +1,20 @@
 ## Functional Specification
-# Group Name: NeuroLit
-# Members: Maggie Clarke, Sritam Kethireddy, Patrick Donnelly
 
 # User Profile:
 
--Our users will be research scientists familiar with python, and specifically, Jupyter Notebook.
--Our users will be familiar with the various reading measures, aptitude tests, and brain imaging data (MEG).
--Our users will also be familiar with the various survey questions used to create the survey dataset.
+- Our users will be research scientists familiar with python, and specifically, Jupyter Notebook.
+- Our users will be familiar with the various reading measures, aptitude tests, and brain imaging data (MEG).
+- Our users will also be familiar with the various survey questions used to create the survey dataset.
 
 # Elements of the problem statement:
 
--What survey measures are indicative of reading skill?
--Do MEG measures predict reading performance/math performance/or other cognitive skills?
--What are the predictors of a diagnosis of a learning disability?
--Can we use machine learning to predict reading outcomes, discover patterns, and/or reveal relationships between survey responses and academic skills?
--Do other experiences (media use/music education) explain variance in reading skill?
--Can we use reading outcomes to predict experience (ex. Homeschooling, media use, experience with text)?
--API that allows users to curate data, analyze it using machine learning techniques, and visualize the data and results in intuitive ways.
+- What survey measures are indicative of reading skill?
+- Do MEG measures predict reading performance/math performance/or other cognitive skills?
+- What are the predictors of a diagnosis of a learning disability?
+- Can we use machine learning to predict reading outcomes, discover patterns, and/or reveal relationships between survey responses and academic skills?
+- Do other experiences (media use/music education) explain variance in reading skill?
+- Can we use reading outcomes to predict experience (ex. Homeschooling, media use, experience with text)?
+- API that allows users to curate data, analyze it using machine learning techniques, and visualize the data and results in intuitive ways.
 
 
 # Use Cases:
