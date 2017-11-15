@@ -66,3 +66,15 @@
   - Heatmaps
   - Histograms
   - etc.
+
+
+# Curating Data:
+
+- Figure out how to use RedCap Python API
+- Create a meta-label CSV file
+- Users should be able to select features individually, select features based on meta-labels, drop individual features, drop features based on meta-labels, print existing features, print available features, print meta-label features
+- Create a variable type CSV file
+- Look at univariate distributions
+- Look at joint distributions
+
+# Analysing Data:
