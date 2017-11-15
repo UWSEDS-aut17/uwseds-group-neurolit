@@ -77,4 +77,4 @@
 - Look at univariate distributions
 - Look at joint distributions
 
-# Analysing Data:
+# Analyzing Data:
