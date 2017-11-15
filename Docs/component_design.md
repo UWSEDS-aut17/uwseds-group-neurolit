@@ -10,7 +10,7 @@
 
 Name, FetchData
 - pulls datasets from repository and converts to python dataFrame for use in analysis
-- Inputs: nonemit
+- Inputs: none
 - Outputs: two python dataFrames
 - PseudoCode:
 	- url1 = x, url2 = y
