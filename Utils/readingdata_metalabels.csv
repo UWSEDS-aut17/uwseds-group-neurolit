@@ -1,42 +1,42 @@
-record_id,
-redcap_event_name,
-wj_lwid_raw,WJ
-wj_lwid_ss,WJ
-wj_wa_raw,WJ
-wj_wa_ss,WJ
-wj_pc_ss,WJ
-wj_or_ss,WJ
-wj_srf_ss,WJ
-wj_mff_ss,WJ
-wj_calc_ss,WJ
-wj_brs,WJ
-wj_rf,WJ
-wj_mcs,WJ
-twre_swe_raw,TOWRE
-twre_swe_ss,TOWRE
-twre_pde_raw,TOWRE
-twre_pde_ss,TOWRE
-twre_index,TOWRE
-wasi_vocab_raw,WASI
-wasi_vocab_ts,WASI
-wasi_mr_raw,WASI
-wasi_mr_ts,WASI
-wasi_fs2,WASI
-wasi_fs4,WASI
-ctopp_elision_raw,CTOPP
-ctopp_elision_ss,CTOPP
-ctopp_bw_raw,CTOPP
-ctopp_bw_ss,CTOPP
-ctopp_pi_raw,CTOPP
-ctopp_pi_ss,CTOPP
-ctopp_md_raw,CTOPP
-ctopp_md_ss,CTOPP
-ctopp_nr_raw,CTOPP
-ctopp_nr_ss,CTOPP
-ctopp_rd_raw,CTOPP
-ctopp_rd_ss,CTOPP
-ctopp_rl_raw,CTOPP
-ctopp_rl_ss,CTOPP
-ctopp_pa,CTOPP
-ctopp_pm,CTOPP
-ctopp_rapid,CTOPP
+Record ID,Metalabel
+Event Name,
+WJ Letter-Word ID raw,WJ
+WJ Letter-Word ID standard,WJ
+WJ Work Attack raw,WJ
+WJ Work Attack standard,WJ
+WJ Passage Comprehension standard,WJ
+WJ Oral Reading standard,WJ
+WJ Sentence Reading Fluency standard,WJ
+WJ Math Facts Fluency standard,WJ
+WJ Calculation standard,WJ
+WJ Basic Reading Skills,WJ
+WJ Reading Fluency,WJ
+WJ Math Calculation Skills,WJ
+TOWRE Sight Word Eficiency raw,TOWRE
+TOWRE Sight Word Eficiency standard,TOWRE
+TOWRE Phonemic Decoding Eficiency raw,TOWRE
+TOWRE Phonemic Decoding Eficiency standard,TOWRE
+TOWRE Index,TOWRE
+WASI Vocabulary raw,WASI
+WASI Vocabulary t score,WASI
+WASI Matrix Reasoning raw,WASI
+WASI Matrix Reasoning t score,WASI
+Full Scale 2,WASI
+Full Scale 4,WASI
+CTOPP Elision raw,CTOPP
+CTOPP Elision standard,CTOPP
+CTOPP Blending Words raw,CTOPP
+CTOPP Blending Words standard,CTOPP
+CTOPP Phoneme Isolation raw,CTOPP
+CTOPP Phoneme Isolation standard,CTOPP
+CTOPP Memory for Digits raw,CTOPP
+CTOPP Memory for Digits standard,CTOPP
+CTOPP Nonword Repetition raw,CTOPP
+CTOPP Nonword Repetition standard,CTOPP
+CTOPP Rapid Digit Naming raw,CTOPP
+CTOPP Rapid Digit Naming standard,CTOPP
+CTOPP Rapid Letter Naming raw,CTOPP
+CTOPP Rapid Letter Naming standard,CTOPP
+CTOPP Phonological Awareness,CTOPP
+CTOPP Phonological Memory,CTOPP
+CTOPP Rapid Symbol Naming,CTOPP

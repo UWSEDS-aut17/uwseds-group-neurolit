@@ -1,85 +1,85 @@
-record_id,
-redcap_event_name,
-dys_dx,READING
-aud_dis_treat,READING
-dys_treat,READING
-reading_rate,READING
-adhd_dx,ADHD
-school_grade,SCHOOL
-school_yn,SCHOOL
-private_school,SCHOOL
-homeschooled,SCHOOL
-read_prob,READING
-repeated_grade,SCHOOL
-read_train,READING
-train_outcome1,READING
-dys_ass,READING
-dis_viz___1,READING
-dis_viz___2,READING
-dis_viz___3,READING
-dis_viz___4,READING
-dis_viz___98,READING
-adhd_assess,ADHD
-adhd_dx_confirm,ADHD
-adhd_anec,ADHD
-adhd_severity,ADHD
-adhd_medicated,ADHD
-dx_relation1,HEREDITARY
-dx_relation2,HEREDITARY
-dx_relation3,HEREDITARY
-dx_relation4,HEREDITARY
-dx_relation5,HEREDITARY
-dx_relation6,HEREDITARY
-dx_relation_sibs1,HEREDITARY
-dx_relation_sibs2,HEREDITARY
-dx_relation_sibs3,HEREDITARY
-dx_relation_sibs4,HEREDITARY
-dx_relation_sibs5,HEREDITARY
-dx_relation_sibs6,HEREDITARY
-dx_relation_sibs7,HEREDITARY
-dx_relation_sibs8,HEREDITARY
-dx_relation_sibs9,HEREDITARY
-dx_relation_sibs10,HEREDITARY
-dx_relation_sibs11,HEREDITARY
-dx_relation_sibs12,HEREDITARY
-dx_relation_sibs13,HEREDITARY
-dx_relation_sibs14,HEREDITARY
-dx_relation_sibs15,HEREDITARY
-dx_relation_sibs16,HEREDITARY
-dx_relation_sibs17,HEREDITARY
-dx_relation_sibs18,HEREDITARY
-dx_relation_sibs19,HEREDITARY
-dx_relation_sibs20,HEREDITARY
-videogames,MEDIA
-videogames_type___1,MEDIA
-videogames_type___2,MEDIA
-videogames_type___3,MEDIA
-videogames_type___4,MEDIA
-videogames_type___5,MEDIA
-videogames_type___6,MEDIA
-videogames_type___7,MEDIA
-videogames_type___8,MEDIA
-videogames_type___9,MEDIA
-videogames_type___10,MEDIA
-videogames_type___98,MEDIA
-videogames_age,MEDIA
-music_ed,MUSIC
-music_training,MUSIC
-music_training_years,MUSIC
-music_training_age,MUSIC
-music_instruments,MUSIC
-videogames_music_complete,
-time_videogames,MUSIC
-time_books,READING
-time_ed,READING
-time_pleasure,READING
-time_news,READING
-time_email,READING
-time_social,READING
-time_text,READING
-time_audiobook,READING
-time_podcasts,READING
-time_music,MUSIC
-time_instruments,MUSIC
-time_video,MEDIA
-media_use_complete,
+Record ID,
+Event Name,
+[have_you_cap] been diagnosed with dyslexia?,READING
+[do_you_cap] presently or [have_you] previously received treatment for these difficulties?,READING
+[do_you_cap] presently or [have_you] previously received services for dyslexia?,READING
+How would you rate [your] reading ability?,READING
+[have_you_cap] been diagnosed with attention deficit hyperactivity disorder (ADHD/ADD)?,ADHD
+What year [are_you] in school?,SCHOOL
+[are_you_cap] currently in school?,SCHOOL
+[have_you_cap] ever been enrolled in private school?,SCHOOL
+[have_you_cap] ever been homeschooled?,SCHOOL
+[have_you_cap] experienced problems with reading?,READING
+Did these problems lead [you] to repeat a grade in school?,SCHOOL
+[have_you_cap] received any tutoring/training/help for reading difficulties?,READING
+How effective do you think this training was?,READING
+[have_you_cap] been assessed for dyslexia?,READING
+[do_you_cap] have any visual illness or impairments? (choice=Color blindness),READING
+[do_you_cap] have any visual illness or impairments? (choice=Eye cataract),READING
+[do_you_cap] have any visual illness or impairments? (choice=Corneal curvature),READING
+[do_you_cap] have any visual illness or impairments? (choice=Amblyopia),READING
+[do_you_cap] have any visual illness or impairments? (choice=Other visual impairment),READING
+[have_you_cap] been assessed for ADHD/ADD?,ADHD
+Was a diagnosis given?,ADHD
+Do you feel [you_have] an attention deficit or display[v_s] hyperactive behavior?,ADHD
+Please indicate the severity of this behavior:,ADHD
+[do_you_cap] take medication for ADHD/ADD?,ADHD
+Mother,HEREDITARY
+Father,HEREDITARY
+Mother's mother,HEREDITARY
+Mother's father,HEREDITARY
+Father's mother,HEREDITARY
+Father's father,HEREDITARY
+Sibling 1,HEREDITARY
+Sibling 2,HEREDITARY
+Sibling 3,HEREDITARY
+Sibling 4,HEREDITARY
+Sibling 5,HEREDITARY
+Sibling 6,HEREDITARY
+Sibling 7,HEREDITARY
+Sibling 8,HEREDITARY
+Sibling 9,HEREDITARY
+Sibling 10,HEREDITARY
+Sibling 11,HEREDITARY
+Sibling 12,HEREDITARY
+Sibling 13,HEREDITARY
+Sibling 14,HEREDITARY
+Sibling 15,HEREDITARY
+Sibling 16,HEREDITARY
+Sibling 17,HEREDITARY
+Sibling 18,HEREDITARY
+Sibling 19,HEREDITARY
+Sibling 20,HEREDITARY
+[do_you_cap] play videogames?,MEDIA
+What types of games [do_you] play? (choice=Action-adventure),MEDIA
+What types of games [do_you] play? (choice=First-person shooter),MEDIA
+What types of games [do_you] play? (choice=RPG),MEDIA
+What types of games [do_you] play? (choice=Simulation),MEDIA
+What types of games [do_you] play? (choice=Puzzle),MEDIA
+What types of games [do_you] play? (choice=Strategy),MEDIA
+What types of games [do_you] play? (choice=Fighting),MEDIA
+What types of games [do_you] play? (choice=Sports),MEDIA
+What types of games [do_you] play? (choice=Card games),MEDIA
+What types of games [do_you] play? (choice=Educational),MEDIA
+What types of games [do_you] play? (choice=Other),MEDIA
+At what age did [you] start playing videogames?,MEDIA
+Did [you] receive musical education at school?,MUSIC
+Did [you] receive additional music training?,MUSIC
+How many years of training [have_you] received?,MUSIC
+From what age?,MUSIC
+What instrument(s) [do_you] play?,MUSIC
+Complete?,
+Playing videogames,MUSIC
+Reading books,READING
+"Reading for school, work, or educational purposes",READING
+Reading for pleasure,READING
+"Reading news (newspapers, magazines, online articles)",READING
+Reading and writing email,READING
+"Surfing social media (Facebook, Twitter, Instagram, etc.)",READING
+"Communicating via text message, online messengers, or chat rooms",READING
+Listening to books (audiobooks or someone reading to [you]),READING
+Listening to podcasts or talk radio,READING
+Listening to music,MUSIC
+Playing or practicing music,MUSIC
+"Watching video (TV, movies, YouTube, etc.)",MEDIA
+Complete?,
