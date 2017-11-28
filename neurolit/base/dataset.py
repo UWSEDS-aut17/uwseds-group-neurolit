@@ -3,6 +3,8 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 import os
+import requests
+import json
 
 sns.set()
 
@@ -56,11 +58,36 @@ class Dataset(object):
         if selected_features is not None:
             self.add_features(selected_features)
 
-        #NEED TO READ IN FROM API INSTEAD OF FILES
-        reading_data = pd.read_csv(os.path.join(data_folder,
-        'RDRPRepository_DATA_LABELS_2017-11-15_0943.csv'))
-        survey_data = pd.read_csv(os.path.join(data_folder,
-        'RDRPRepository_DATA_LABELS_2017-11-15_0944.csv'))
+        # RedCap API data access
+        # This code snippet will pull the data reports from RedCap as JSON files
+        # and convert to Python DataFrame objects
+        # Requires user input of API token
+        # Token is to be stored locally for data security
+        token = input('What is the API token?')
+        reading_data = {
+            'token': token,
+            'content': 'report',
+            'format': 'json',
+            'report_id': '20197',
+            'rawOrLabel': 'raw',
+            'rawOrLabelHeaders': 'raw',
+            'exportCheckboxLabel': 'false',
+            'returnFormat': 'json'
+        }
+        survey_data = {
+            'token': token,
+            'content': 'report',
+            'format': 'json',
+            'report_id': '20199',
+            'rawOrLabel': 'raw',
+            'rawOrLabelHeaders': 'raw',
+            'exportCheckboxLabel': 'false',
+            'returnFormat': 'json'
+        }
+        r_reading = requests.post('https://redcap.iths.org/api/', data=reading_data)
+        r_survey = requests.post('https://redcap.iths.org/api/', data=survey_data)
+        reading_data = pd.read_json(r_reading.text)
+        survey_data = pd.read_json(r_survey.text)
 
         self.all_data = reading_data.set_index('Record ID').\
         join(survey_data.set_index('Record ID'),
