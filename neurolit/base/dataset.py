@@ -65,7 +65,7 @@ class Dataset(object):
         token_path = os.path.expanduser('~/Desktop/neurolit_api_token.txt')
         if os.path.exists(token_path):
             with open(token_path, 'r') as myfile:
-              token=myfile.read().replace('\n', '')
+                token=myfile.read().replace('\n', '')
         else:
             token = input('What is the API token?')
         reading_data = {
@@ -92,19 +92,19 @@ class Dataset(object):
         r_reading = requests.post(redcap_path, data=reading_data)
         r_survey = requests.post(redcap_path, data=survey_data)
 
-        reading_filename ='readingfile.csv'
+        reading_filename =os.path.join(data_folder,'readingfile.csv')
         with open(reading_filename, 'w') as reading_file:
             reading_file.write(r_reading.text)
 
-        survey_filename = 'surveyfile.csv'
+        survey_filename = os.path.join(data_folder,'surveyfile.csv')
         with open(survey_filename, 'w') as survey_file:
             survey_file.write(r_survey.text)
 
         reading_data = pd.read_csv(reading_filename)
         survey_data = pd.read_csv(survey_filename)
 
-        self.all_data = reading_data.set_index('Record ID').\
-        join(survey_data.set_index('Record ID'),
+        self.all_data = reading_data.set_index('record_id').\
+        join(survey_data.set_index('record_id'),
         lsuffix='_reading', rsuffix='_survey')
 
         self.filter_data()
