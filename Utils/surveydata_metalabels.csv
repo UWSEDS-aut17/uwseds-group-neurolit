@@ -1,86 +1,16 @@
-Feature,Metalabel
-Record ID,
-Event Name,
-[have_you_cap] been diagnosed with dyslexia?,READING
-[do_you_cap] presently or [have_you] previously received treatment for these difficulties?,READING
-[do_you_cap] presently or [have_you] previously received services for dyslexia?,READING
-How would you rate [your] reading ability?,READING
-[have_you_cap] been diagnosed with attention deficit hyperactivity disorder (ADHD/ADD)?,ADHD
-What year [are_you] in school?,SCHOOL
-[are_you_cap] currently in school?,SCHOOL
-[have_you_cap] ever been enrolled in private school?,SCHOOL
-[have_you_cap] ever been homeschooled?,SCHOOL
-[have_you_cap] experienced problems with reading?,READING
-Did these problems lead [you] to repeat a grade in school?,SCHOOL
-[have_you_cap] received any tutoring/training/help for reading difficulties?,READING
-How effective do you think this training was?,READING
-[have_you_cap] been assessed for dyslexia?,READING
-[do_you_cap] have any visual illness or impairments? (choice=Color blindness),READING
-[do_you_cap] have any visual illness or impairments? (choice=Eye cataract),READING
-[do_you_cap] have any visual illness or impairments? (choice=Corneal curvature),READING
-[do_you_cap] have any visual illness or impairments? (choice=Amblyopia),READING
-[do_you_cap] have any visual illness or impairments? (choice=Other visual impairment),READING
-[have_you_cap] been assessed for ADHD/ADD?,ADHD
-Was a diagnosis given?,ADHD
-Do you feel [you_have] an attention deficit or display[v_s] hyperactive behavior?,ADHD
-Please indicate the severity of this behavior:,ADHD
-[do_you_cap] take medication for ADHD/ADD?,ADHD
-Mother,HEREDITARY
-Father,HEREDITARY
-Mother's mother,HEREDITARY
-Mother's father,HEREDITARY
-Father's mother,HEREDITARY
-Father's father,HEREDITARY
-Sibling 1,HEREDITARY
-Sibling 2,HEREDITARY
-Sibling 3,HEREDITARY
-Sibling 4,HEREDITARY
-Sibling 5,HEREDITARY
-Sibling 6,HEREDITARY
-Sibling 7,HEREDITARY
-Sibling 8,HEREDITARY
-Sibling 9,HEREDITARY
-Sibling 10,HEREDITARY
-Sibling 11,HEREDITARY
-Sibling 12,HEREDITARY
-Sibling 13,HEREDITARY
-Sibling 14,HEREDITARY
-Sibling 15,HEREDITARY
-Sibling 16,HEREDITARY
-Sibling 17,HEREDITARY
-Sibling 18,HEREDITARY
-Sibling 19,HEREDITARY
-Sibling 20,HEREDITARY
-[do_you_cap] play videogames?,MEDIA
-What types of games [do_you] play? (choice=Action-adventure),MEDIA
-What types of games [do_you] play? (choice=First-person shooter),MEDIA
-What types of games [do_you] play? (choice=RPG),MEDIA
-What types of games [do_you] play? (choice=Simulation),MEDIA
-What types of games [do_you] play? (choice=Puzzle),MEDIA
-What types of games [do_you] play? (choice=Strategy),MEDIA
-What types of games [do_you] play? (choice=Fighting),MEDIA
-What types of games [do_you] play? (choice=Sports),MEDIA
-What types of games [do_you] play? (choice=Card games),MEDIA
-What types of games [do_you] play? (choice=Educational),MEDIA
-What types of games [do_you] play? (choice=Other),MEDIA
-At what age did [you] start playing videogames?,MEDIA
-Did [you] receive musical education at school?,MUSIC
-Did [you] receive additional music training?,MUSIC
-How many years of training [have_you] received?,MUSIC
-From what age?,MUSIC
-What instrument(s) [do_you] play?,MUSIC
-Complete?,
-Playing videogames,MUSIC
-Reading books,READING
-"Reading for school, work, or educational purposes",READING
-Reading for pleasure,READING
-"Reading news (newspapers, magazines, online articles)",READING
-Reading and writing email,READING
-"Surfing social media (Facebook, Twitter, Instagram, etc.)",READING
-"Communicating via text message, online messengers, or chat rooms",READING
-Listening to books (audiobooks or someone reading to [you]),READING
-Listening to podcasts or talk radio,READING
-Listening to music,MUSIC
-Playing or practicing music,MUSIC
-"Watching video (TV, movies, YouTube, etc.)",MEDIA
-Complete?,
+record_id,,,,,,,,,,,,,,,,,,,,,
+redcap_event_name,,,,,,,,,,,,,,,,,,,,,
+dys_dx,DYS,,,,,,,,,,,,,,,,,,,,
+dys_treat,DYS,,,,,,,,,,,,,,,,,,,,
+reading_rate,READING,,,,,,,,,,,,,,,,,,,,
+school_grade,SCHOOL,,,,,,,,,,,,,,,,,,,,
+school_yn,SCHOOL,,,,,,,,,,,,,,,,,,,,
+private_school,SCHOOL,,,,,,,,,,,,,,,,,,,,
+homeschooled,SCHOOL,,,,,,,,,,,,,,,,,,,,
+read_prob,READING,,,,,,,,,,,,,,,,,,,,
+repeated_grade,SCHOOL,,,,,,,,,,,,,,,,,,,,
+read_train,READING,,,,,,,,,,,,,,,,,,,,
+dys_ass,DYS,,,,,,,,,,,,,,,,,,,,
+videogames,GAMES,,,,,,,,,,,,,,,,,,,,
+music_ed,MUSIC,,,,,,,,,,,,,,,,,,,,
+music_training,MUSIC,,,,,,,,,,,,,,,,,,,,
