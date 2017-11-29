@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import os
 import requests
-import json
 
 sns.set()
 
@@ -59,35 +58,50 @@ class Dataset(object):
             self.add_features(selected_features)
 
         # RedCap API data access
-        # This code snippet will pull the data reports from RedCap as JSON files
+        # This code snippet will pull the data reports from RedCap as csv files
         # and convert to Python DataFrame objects
-        # Requires user input of API token
-        # Token is to be stored locally for data security
-        token = input('What is the API token?')
+        # Requires user input of API token if neurolit_api_token.txt does not
+        #   exist on Desktop
+        token_path = os.path.expanduser('~/Desktop/neurolit_api_token.txt')
+        if os.path.exists(token_path):
+            with open(token_path, 'r') as myfile:
+              token=myfile.read().replace('\n', '')
+        else:
+            token = input('What is the API token?')
         reading_data = {
             'token': token,
             'content': 'report',
-            'format': 'json',
+            'format': 'csv',
             'report_id': '20197',
             'rawOrLabel': 'raw',
             'rawOrLabelHeaders': 'raw',
             'exportCheckboxLabel': 'false',
-            'returnFormat': 'json'
+            'returnFormat': 'csv'
         }
         survey_data = {
             'token': token,
             'content': 'report',
-            'format': 'json',
+            'format': 'csv',
             'report_id': '20199',
             'rawOrLabel': 'raw',
             'rawOrLabelHeaders': 'raw',
             'exportCheckboxLabel': 'false',
-            'returnFormat': 'json'
+            'returnFormat': 'csv'
         }
-        r_reading = requests.post('https://redcap.iths.org/api/', data=reading_data)
-        r_survey = requests.post('https://redcap.iths.org/api/', data=survey_data)
-        reading_data = pd.read_json(r_reading.text)
-        survey_data = pd.read_json(r_survey.text)
+        redcap_path = 'https://redcap.iths.org/api/'
+        r_reading = requests.post(redcap_path, data=reading_data)
+        r_survey = requests.post(redcap_path, data=survey_data)
+
+        reading_filename ='readingfile.csv'
+        with open(reading_filename, 'w') as reading_file:
+            reading_file.write(r_reading.text)
+
+        survey_filename = 'surveyfile.csv'
+        with open(survey_filename, 'w') as survey_file:
+            survey_file.write(r_survey.text)
+
+        reading_data = pd.read_csv(reading_filename)
+        survey_data = pd.read_csv(survey_filename)
 
         self.all_data = reading_data.set_index('Record ID').\
         join(survey_data.set_index('Record ID'),
