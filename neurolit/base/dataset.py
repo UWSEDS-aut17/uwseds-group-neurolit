@@ -37,7 +37,8 @@ class Dataset(object):
                  output_folder = 'output',
                  selected_features = None,
                  selected_metalabels = None,
-                 metalabel_files = None):
+                 metalabel_files = None,
+                 token_file = None):
 
         self.features_list = []
 
@@ -60,14 +61,15 @@ class Dataset(object):
         # RedCap API data access
         # This code snippet will pull the data reports from RedCap as csv files
         # and convert to Python DataFrame objects
-        # Requires user input of API token if neurolit_api_token.txt does not
-        #   exist on Desktop
-        token_path = os.path.expanduser('~/Desktop/neurolit_api_token.txt')
-        if os.path.exists(token_path):
-            with open(token_path, 'r') as myfile:
-                token=myfile.read().replace('\n', '')
+
+        if token_file is not None:
+            token_path = os.path.join(data_folder, token_file)
+            if os.path.exists(token_path):
+                with open(token_path, 'r') as myfile:
+                    token=myfile.read().replace('\n', '')
         else:
-            token = input('What is the API token?')
+            token = input('What is the API token? ')
+
         reading_data = {
             'token': token,
             'content': 'report',
@@ -88,6 +90,7 @@ class Dataset(object):
             'exportCheckboxLabel': 'false',
             'returnFormat': 'csv'
         }
+
         redcap_path = 'https://redcap.iths.org/api/'
         r_reading = requests.post(redcap_path, data=reading_data)
         r_survey = requests.post(redcap_path, data=survey_data)
@@ -107,21 +110,27 @@ class Dataset(object):
         join(survey_data.set_index('record_id'),
         lsuffix='_reading', rsuffix='_survey')
 
-        self.filter_data()
+        if not selected_features and not selected_metalabels:
+            self.frame = self.all_data
+        else:
+            self.filter_data()
 
 
     def parse_metalabel_files(self, metalabel_files):
+        metalabel_files = list(metalabel_files)
         metalabel_frame = pd.concat([pd.read_csv(f) for f in metalabel_files])
         self.metalabel_dict = {k: g.iloc[:,0].tolist()
         for k,g in metalabel_frame.groupby(metalabel_frame.iloc[:,1])}
 
 
     def add_metalabels(self, selected_metalabels):
+        selected_metalabels = list(selected_metalabels)
         for metalabel in selected_metalabels:
             self.add_features(self.metalabel_dict[metalabel])
 
 
     def add_features(self, selected_features):
+        selected_features = list(selected_features)
         for feature in selected_features:
             if feature not in self.features_list:
                 self.features_list.append(feature)
@@ -130,11 +139,13 @@ class Dataset(object):
             self.filter_data()
 
     def drop_metalabels(self, selected_metalabels):
+        selected_metalabels = list(selected_metalabels)
         for metalabel in selected_metalabels:
             self.drop_features(self.metalabel_dict[metalabel])
 
 
     def drop_features(self, selected_features):
+        selected_metalabels = list(selected_features)
         for feature in selected_features:
             if feature in self.features_list:
                 self.features_list.remove(feature)
@@ -156,6 +167,7 @@ class Dataset(object):
 
 
     def print_metalabel_features(self, selected_metalabels):
+        selected_metalabels = list(selected_metalabels)
         if hasattr(self, 'metalabel_dict'):
             for metalabel in selected_metalabels:
                 print(self.metalabel_dict[metalabel])
