@@ -28,7 +28,7 @@ def pca_variance_plot(pca, output_directory,
 
 
 #2D scatter plot of first and second PCA components
-def pca_2DScatter(pca_data, output_directory,
+def pca_2D_scatter(pca_data, output_directory,
                             fig_name = 'PCA2DScatter.png'):
     plt.figure()
     plt.scatter(pca_data[:,0], pca_data[:,1])
@@ -39,7 +39,7 @@ def pca_2DScatter(pca_data, output_directory,
 
 
 #3D scatter plot of first, second and third PCA components
-def pca_3DScatter(pca_data, output_directory,
+def pca_3D_scatter(pca_data, output_directory,
                             fig_name = 'PCA3DScatter.png'):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection = '3d')
