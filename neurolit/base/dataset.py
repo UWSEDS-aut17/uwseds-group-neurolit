@@ -1,4 +1,6 @@
+from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+from fancyimpute import KNN
 import missingno as msno
 import seaborn as sns
 import pandas as pd
@@ -222,3 +224,14 @@ class Dataset(object):
         drop_indexes = [i for i, m in enumerate(self.frame.isnull().sum(axis=1))
         if m > max_missing_count]
         self.frame.drop(self.frame.index[drop_indexes],axis=0,inplace=True)
+
+
+def impute_missing(dataset_object):
+    dataset_object.frame = KNN(k=3).complete(dataset_object.frame)
+    return dataset_object
+
+
+def normalize_data(dataset_object):
+    dataset_object.frame = \
+    StandardScaler().fit(dataset_object.frame).transform(dataset_object.frame)
+    return dataset_object
