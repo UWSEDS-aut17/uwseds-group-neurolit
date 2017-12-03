@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
+import missingno as msno
 import seaborn as sns
 import pandas as pd
 import numpy as np
-import os
 import requests
+import os
 
 sns.set()
 
@@ -28,8 +29,18 @@ class Dataset(object):
         of metalabels associated with reading and survey data which
         are desired to be added to the dataset
 
+        missingness_threshold (float): Real number between 0 and 1 which
+        specifies the maximum perecent of missing values columns of data
+        can have to be included in the Dataset
+
+        max_missing_count (int): specifies the maximum number of missing
+        data values in a row of the data. Any row with more missing values
+        than max_missing_count will be filtered out
+
         metalabel_files (list): list of strings containing names of
         metalabel files
+
+        token_file (str): name of .txt file which contains API token
     """
 
     #Constructor for Dataset objects
@@ -37,6 +48,8 @@ class Dataset(object):
                  output_folder = 'output',
                  selected_features = None,
                  selected_metalabels = None,
+                 missingness_threshold = None,
+                 max_missing_count = None,
                  metalabel_files = None,
                  token_file = None):
 
@@ -115,6 +128,12 @@ class Dataset(object):
         else:
             self.filter_data()
 
+        if missingness_threshold is not None:
+            self.drop_missing_cols(missingness_threshold)
+
+        if max_missing_count is not None:
+            self.drop_missing_rows(max_missing_count)
+
 
     def parse_metalabel_files(self, metalabel_files):
         metalabel_files = list(metalabel_files)
@@ -155,10 +174,10 @@ class Dataset(object):
 
 
     def print_dataset_features(self):
-        if not self.features_list:
+        if not self.frame.columns:
             print('No features were selected.')
         else:
-            print(self.features_list)
+            print(self.frame.columns)
 
 
     def print_unused_features(self):
@@ -174,5 +193,32 @@ class Dataset(object):
         else:
             print('Warning: Metalabel file(s) not provided.')
 
+
+    def print_missingness(self):
+        print(self.frame.isnull().sum()/self.frame.shape[0]*100)
+
+
     def filter_data(self):
         self.frame = self.all_data[self.features_list]
+
+
+    def visualize_missingness(self, output_directory,
+                                    fig_name = 'missingness.png'):
+        plt.figure()
+        fig = msno.matrix(self.frame,inline=False)
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)
+        fig.savefig(os.path.join(output_directory, fig_name))
+
+
+    def drop_missing_cols(self, missingness_threshold):
+        missingness = self.frame.isnull().sum(axis=0)/self.frame.shape[0]
+        drop_indexes = [i for i, m in enumerate(missingness)
+        if m > missingness_threshold]
+        self.frame.drop(self.frame.columns[drop_indexes],axis=1,inplace=True)
+
+
+    def drop_missing_rows(self, max_missing_count):
+        drop_indexes = [i for i, m in enumerate(self.frame.isnull().sum(axis=1))
+        if m > max_missing_count]
+        self.frame.drop(self.frame.index[drop_indexes],axis=0,inplace=True)
