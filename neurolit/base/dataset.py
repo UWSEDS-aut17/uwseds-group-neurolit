@@ -23,13 +23,18 @@ class Dataset(object):
         output_folder (str): name of folder where any figures and data
         generated will be output
 
-        selected_features (list): list of strings containing names
+        selected_features (list/str): list of strings containing names
         of individual features from reading and survey data which
-        are desired to be added to the dataset
+        are desired to be added to the dataset. Note: These are
+        used as predictors
 
-        selected_metalabels (list): list of strings containing names
+        selected_metalabels (list/str): list of strings containing names
         of metalabels associated with reading and survey data which
-        are desired to be added to the dataset
+        are desired to be added to the dataset. Note: These are used
+        as predictors
+
+        outcome_variable (str): name of variable desired to be predicted
+        as an outcome for building supervised learning models
 
         missingness_threshold (float): Real number between 0 and 1 which
         specifies the maximum perecent of missing values columns of data
@@ -50,6 +55,7 @@ class Dataset(object):
                  output_folder = 'output',
                  selected_features = None,
                  selected_metalabels = None,
+                 outcome_variable = None,
                  missingness_threshold = None,
                  max_missing_count = None,
                  metalabel_files = None,
@@ -136,22 +142,26 @@ class Dataset(object):
         if max_missing_count is not None:
             self.drop_missing_rows(max_missing_count)
 
+        if outcome_variable is not None:
+            self.class_label = self.all_data[outcome_variable]
+
 
     def parse_metalabel_files(self, metalabel_files):
-        metalabel_files = list(metalabel_files)
         metalabel_frame = pd.concat([pd.read_csv(f) for f in metalabel_files])
         self.metalabel_dict = {k: g.iloc[:,0].tolist()
         for k,g in metalabel_frame.groupby(metalabel_frame.iloc[:,1])}
 
 
     def add_metalabels(self, selected_metalabels):
-        selected_metalabels = list(selected_metalabels)
+        if isinstance(selected_metalabels, str):
+            selected_metalabels = [selected_metalabels]
         for metalabel in selected_metalabels:
             self.add_features(self.metalabel_dict[metalabel])
 
 
     def add_features(self, selected_features):
-        selected_features = list(selected_features)
+        if isinstance(selected_features, str):
+            selected_metalabels = [selected_features]
         for feature in selected_features:
             if feature not in self.features_list:
                 self.features_list.append(feature)
@@ -159,14 +169,17 @@ class Dataset(object):
         if hasattr(self, 'frame'):
             self.filter_data()
 
+
     def drop_metalabels(self, selected_metalabels):
-        selected_metalabels = list(selected_metalabels)
+        if isinstance(selected_metalabels, str):
+            selected_metalabels = [selected_metalabels]
         for metalabel in selected_metalabels:
             self.drop_features(self.metalabel_dict[metalabel])
 
 
     def drop_features(self, selected_features):
-        selected_metalabels = list(selected_features)
+        if isinstance(selected_features, str):
+            selected_metalabels = [selected_features]
         for feature in selected_features:
             if feature in self.features_list:
                 self.features_list.remove(feature)
@@ -188,7 +201,8 @@ class Dataset(object):
 
 
     def print_metalabel_features(self, selected_metalabels):
-        selected_metalabels = list(selected_metalabels)
+        if isinstance(selected_metalabels, str):
+            selected_metalabels = [selected_metalabels]
         if hasattr(self, 'metalabel_dict'):
             for metalabel in selected_metalabels:
                 print(self.metalabel_dict[metalabel])
@@ -227,11 +241,27 @@ class Dataset(object):
 
 
 def impute_missing(dataset_object):
-    dataset_object.frame = KNN(k=3).complete(dataset_object.frame)
+    if hasattr(dataset_object,'class_label'):
+        temp_data = dataset_object.frame.join(dataset_object.class_label)
+        temp_data = KNN(k=5).complete(temp_data)
+        dataset_object.class_label = pd.Series(data=np.round(temp_data[:,-1]),
+                                             index = dataset_object.frame.index)
+        dataset_object.frame = pd.DataFrame(data=temp_data[:,:-1],
+                                        index = dataset_object.frame.index,
+                                        columns = dataset_object.frame.columns)
+    else:
+        temp_data = KNN(k=5).complete(dataset_object.frame)
+        dataset_object.frame = pd.DataFrame(data=temp_data,
+                                        index = dataset_object.frame.index,
+                                        columns = dataset_object.frame.columns)
+
     return dataset_object
 
 
 def normalize_data(dataset_object):
-    dataset_object.frame = \
+    temp_data = \
     StandardScaler().fit(dataset_object.frame).transform(dataset_object.frame)
+    dataset_object.frame = pd.DataFrame(data=temp_data,
+                                    index = dataset_object.frame.index,
+                                    columns = dataset_object.frame.columns)
     return dataset_object
