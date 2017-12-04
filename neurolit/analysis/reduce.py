@@ -35,7 +35,7 @@ def pca_variance_plot(pca, output_directory,
     plt.ylabel('explained variance')
     plt.title('Explained Variance vs. #Eigenmodes: PCA')
     if not os.path.exists(output_directory):
-        os.makedirs(output_directory
+        os.makedirs(output_directory)
     plt.savefig(os.path.join(output_directory, fig_name))
 
 
@@ -48,7 +48,7 @@ def pca_2D_scatter(pca_data, output_directory,
     plt.xlabel("1st eigenvector")
     plt.ylabel("2nd eigenvector")
     if not os.path.exists(output_directory):
-        os.makedirs(output_directory
+        os.makedirs(output_directory)
     plt.savefig(os.path.join(output_directory, fig_name))
 
 
@@ -62,5 +62,5 @@ def pca_3D_scatter(pca_data, output_directory,
     ax.set_ylabel('2nd eigenvector')
     ax.set_zlabel('3rd eigenvector')
     if not os.path.exists(output_directory):
-        os.makedirs(output_directory
+        os.makedirs(output_directory)
     plt.savefig(os.path.join(output_directory, fig_name))

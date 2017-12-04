@@ -86,5 +86,5 @@ class Classifier(object):
         plt.xlabel('true label')
         plt.ylabel('predicted label')
         if not os.path.exists(output_directory):
-            os.makedirs(output_directory
+            os.makedirs(output_directory)
         plt.savefig(os.path.join(output_directory, fig_name))
