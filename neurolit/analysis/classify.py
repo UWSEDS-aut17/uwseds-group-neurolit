@@ -85,4 +85,6 @@ class Classifier(object):
         sns.heatmap(mat.T, square=True, annot=True, fmt='d', cbar=False)
         plt.xlabel('true label')
         plt.ylabel('predicted label')
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory
         plt.savefig(os.path.join(output_directory, fig_name))

@@ -147,6 +147,8 @@ class Dataset(object):
 
 
     def parse_metalabel_files(self, metalabel_files):
+        if isinstance(metalabel_files, str):
+            metalabel_files = [metalabel_files]
         metalabel_frame = pd.concat([pd.read_csv(f) for f in metalabel_files])
         self.metalabel_dict = {k: g.iloc[:,0].tolist()
         for k,g in metalabel_frame.groupby(metalabel_frame.iloc[:,1])}
