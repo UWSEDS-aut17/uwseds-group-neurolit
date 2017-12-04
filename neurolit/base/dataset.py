@@ -1,11 +1,13 @@
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 from fancyimpute import KNN
+from pathlib import Path
 import missingno as msno
 import seaborn as sns
 import pandas as pd
 import numpy as np
 import requests
+import sys
 import os
 
 sns.set()
@@ -63,6 +65,11 @@ class Dataset(object):
 
         self.features_list = []
 
+        data_folder = os.path.expanduser(data_folder)
+
+        if not os.path.exists(data_folder):
+            raise IOError('Warning: specified data folder not found')
+
         if metalabel_files is not None:
             if isinstance(metalabel_files, str):
                 metalabel_files = [metalabel_files]
@@ -119,12 +126,14 @@ class Dataset(object):
         r_survey = requests.post(redcap_path, data=survey_data)
 
         reading_filename =os.path.join(data_folder,'readingfile.csv')
+
         with open(reading_filename, 'w') as reading_file:
-            reading_file.write(r_reading.text)
+                reading_file.write(r_reading.text)
 
         survey_filename = os.path.join(data_folder,'surveyfile.csv')
+
         with open(survey_filename, 'w') as survey_file:
-            survey_file.write(r_survey.text)
+                survey_file.write(r_survey.text)
 
         reading_data = pd.read_csv(reading_filename)
         survey_data = pd.read_csv(survey_filename)
