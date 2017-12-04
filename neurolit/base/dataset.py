@@ -51,7 +51,7 @@ class Dataset(object):
     """
 
     #Constructor for Dataset objects
-    def __init__(self, data_folder = '../data',
+    def __init__(self, data_folder = None,
                  output_folder = 'output',
                  selected_features = None,
                  selected_metalabels = None,
