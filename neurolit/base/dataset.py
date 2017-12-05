@@ -138,8 +138,42 @@ class Dataset(object):
         reading_data = pd.read_csv(reading_filename)
         survey_data = pd.read_csv(survey_filename)
 
-        self.all_data = reading_data.set_index('record_id').\
-        join(survey_data.set_index('record_id'),
+        reading_data.rename(columns={'record_id':'ID',
+             'redcap_event_name':'Event', 'wj_lwid_ss':'WJ Letter Word ID',
+             'wj_wa_ss':'WJ Word Attack', 'wj_or_ss':'WJ Oral Reading',
+             'wj_srf_ss':'WJ Sentence Reading Fluency',
+             'wj_mff_ss':'WJ Math Facts Fluency',
+             'wj_brs':'WJ Basic Reading Skills', 'wj_rf':'WJ Reading Fluency',
+             'twre_swe_ss':'TOWRE Sight Word Efficiency',
+             'twre_pde_ss':'TOWRE Phonemic Decoding Efficiency',
+             'twre_index':'TOWRE Index', 'wasi_vocab_ts':'WASI Vocabulary',
+             'wasi_mr_ts':'WASI Matrix Reasoning',
+             'wasi_fs2':'WASI Full Scale 2', 'ctopp_elision_ss':'CTOPP Elision',
+             'ctopp_bw_ss':'CTOPP Blending Words',
+             'ctopp_pi_ss':'CTOPP Phoneme Isolation',
+             'ctopp_md_ss':'CTOPP Memory for Digits',
+             'ctopp_nr_ss':'CTOPP Nonword Repetition',
+             'ctopp_rd_ss':'CTOPP Rapid Digit Naming',
+             'ctopp_rl_ss':'CTOPP Rapid Letter Naming',
+             'ctopp_pa':'CTOPP Phonological Awareness',
+             'ctopp_pm':'CTOPP Phonological Memory',
+             'ctopp_rapid':'CTOPP Rapid Naming'}, inplace=True)
+
+        survey_data.rename(columns={'record_id':'ID',
+            'redcap_event_name':'EVENT', 'dys_dx':'Dyslexia Diagnosis',
+            'dys_treat':'Dyslexia Treatment',
+            'reading_rate':'Perceived Reading Skill',
+            'school_grade': 'Grade', 'school_yn':'Enrolled in School',
+            'private_school':'Private School',
+            'homeschooled':'Homeschooled', 'read_prob': 'Problems with Reading',
+            'repeated_grade':'Repeated a Grade',
+            'read_train':'Reading Training',
+            'dys_ass':'Assessed for Dyslexia', 'videogames':'Plays Videogames',
+            'music_ed':'Music Education',
+            'music_training':'Music Training'}, inplace=True)
+
+        self.all_data = reading_data.set_index('ID').\
+        join(survey_data.set_index('ID'),
         lsuffix='_reading', rsuffix='_survey')
 
         if not selected_features and not selected_metalabels:
