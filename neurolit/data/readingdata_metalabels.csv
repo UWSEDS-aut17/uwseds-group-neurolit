@@ -1,26 +1,26 @@
 Feature,Metalabel
-record_id,
-redcap_event_name,
-wj_lwid_ss,WJ
-wj_wa_ss,WJ
-wj_or_ss,WJ
-wj_srf_ss,WJ
-wj_mff_ss,WJ
-wj_brs,WJ
-wj_rf,WJ
-twre_swe_ss,TOWRE
-twre_pde_ss,TOWRE
-twre_index,TOWRE
-wasi_vocab_ts,WASI
-wasi_mr_ts,WASI
-wasi_fs2,WASI
-ctopp_elision_ss,CTOPP
-ctopp_bw_ss,CTOPP
-ctopp_pi_ss,CTOPP
-ctopp_md_ss,CTOPP
-ctopp_nr_ss,CTOPP
-ctopp_rd_ss,CTOPP
-ctopp_rl_ss,CTOPP
-ctopp_pa,CTOPP
-ctopp_pm,CTOPP
-ctopp_rapid,CTOPP
+ID,
+Event,
+WJ Letter Word ID,WJ
+WJ Word Attack,WJ
+WJ Oral Reading,WJ
+WJ Sentence Reading Fluency,WJ
+WJ Math Facts Fluency,WJ
+WJ Basic Reading Skills,WJ
+WJ Reading Fluency,WJ
+TOWRE Sight Word Efficiency,TOWRE
+TOWRE Phonemic Decoding Efficiency,TOWRE
+TOWRE Index,TOWRE
+WASI Vocabulary,WASI
+WASI Matrix Reasoning,WASI
+WASI Full Scale 2,WASI
+CTOPP Elision,CTOPP
+CTOPP Blending Words,CTOPP
+CTOPP Phoneme Isolation,CTOPP
+CTOPP Memory for Digits,CTOPP
+CTOPP Nonword Repetition,CTOPP
+CTOPP Rapid Digit Naming,CTOPP
+CTOPP Rapid Letter Naming,CTOPP
+CTOPP Phonological Awareness,CTOPP
+CTOPP Phonological Memory,CTOPP
+CTOPP Rapid Naming,CTOPP

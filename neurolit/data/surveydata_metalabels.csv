@@ -1,16 +1,16 @@
-record_id,,,,,,,,,,,,,,,,,,,,,
-redcap_event_name,,,,,,,,,,,,,,,,,,,,,
-dys_dx,DYS,,,,,,,,,,,,,,,,,,,,
-dys_treat,DYS,,,,,,,,,,,,,,,,,,,,
-reading_rate,READING,,,,,,,,,,,,,,,,,,,,
-school_grade,SCHOOL,,,,,,,,,,,,,,,,,,,,
-school_yn,SCHOOL,,,,,,,,,,,,,,,,,,,,
-private_school,SCHOOL,,,,,,,,,,,,,,,,,,,,
-homeschooled,SCHOOL,,,,,,,,,,,,,,,,,,,,
-read_prob,READING,,,,,,,,,,,,,,,,,,,,
-repeated_grade,SCHOOL,,,,,,,,,,,,,,,,,,,,
-read_train,READING,,,,,,,,,,,,,,,,,,,,
-dys_ass,DYS,,,,,,,,,,,,,,,,,,,,
-videogames,GAMES,,,,,,,,,,,,,,,,,,,,
-music_ed,MUSIC,,,,,,,,,,,,,,,,,,,,
-music_training,MUSIC,,,,,,,,,,,,,,,,,,,,
+ID,
+EVENT,
+Dyslexia Diagnosis,DYS
+Dyslexia Treatment,DYS
+Perceived Reading Skill,READING
+Grade,SCHOOL
+Enrolled in School,SCHOOL
+Private School,SCHOOL
+Homeschooled,SCHOOL
+Problems with Reading,READING
+Repeated a Grade,SCHOOL
+Reading Training,READING
+Assessed for Dyslexia,DYS
+Plays Videogames,GAMES
+Music Education,MUSIC
+Music Training,MUSIC
