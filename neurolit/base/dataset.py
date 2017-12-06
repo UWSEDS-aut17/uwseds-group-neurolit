@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from fancyimpute import KNN
 from pathlib import Path
 import missingno as msno
+import neurolit as nlit
 import seaborn as sns
 import pandas as pd
 import numpy as np
@@ -65,10 +66,13 @@ class Dataset(object):
 
         self.features_list = []
 
-        data_folder = os.path.expanduser(data_folder)
+        if data_folder is not None:
+            data_folder = os.path.expanduser(data_folder)
 
-        if not os.path.exists(data_folder):
-            raise IOError('Warning: specified data folder not found')
+        if data_folder is None or not os.path.exists(data_folder):
+            print("Warning: specified data_folder does not exist")
+            data_folder = os.path.join(nlit.__path__[0],'data')
+            print("Data will be added to neurosynth/data directory")
 
         if metalabel_files is not None:
             if isinstance(metalabel_files, str):
@@ -192,6 +196,8 @@ class Dataset(object):
 
 
     def parse_metalabel_files(self, metalabel_files):
+        if isinstance(metalabel_files, str):
+            metalabel_files = [metalabel_files]
         metalabel_frame = pd.concat([pd.read_csv(f) for f in metalabel_files])
         self.metalabel_dict = {k: g.iloc[:,0].tolist()
         for k,g in metalabel_frame.groupby(metalabel_frame.iloc[:,1])}
