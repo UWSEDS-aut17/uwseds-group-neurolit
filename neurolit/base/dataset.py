@@ -221,7 +221,7 @@ class Dataset(object):
 
     def add_features(self, selected_features):
         if isinstance(selected_features, str):
-            selected_metalabels = [selected_features]
+            selected_features = [selected_features]
         for feature in selected_features:
             if feature not in self.features_list:
                 self.features_list.append(feature)
