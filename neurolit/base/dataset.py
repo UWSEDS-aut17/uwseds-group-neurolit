@@ -64,9 +64,12 @@ class Dataset(object):
                  metalabel_files = None,
                  token_file = None):
 
+
         self.features_list = []
 
         if data_folder is not None:
+            if type(data_folder) is not str:
+                raise TypeError("Warning: data_folder should be a string")
             data_folder = os.path.expanduser(data_folder)
 
         if data_folder is None or not os.path.exists(data_folder):
@@ -189,16 +192,22 @@ class Dataset(object):
             self.drop_missing_cols(missingness_threshold)
 
         if max_missing_count is not None:
+            if type(max_missing_count) is not int:
+                raise TypeError("Warning: max_missing_count should be an int")
             self.drop_missing_rows(max_missing_count)
 
         if outcome_variable is not None:
+            if type(outcome_variable) is not str:
+                raise TypeError("Warning: outcome_variable should be a string")
             self.class_label = self.all_data[outcome_variable]
 
 
     def parse_metalabel_files(self, metalabel_files):
         if isinstance(metalabel_files, str):
             metalabel_files = [metalabel_files]
-        metalabel_frame = pd.concat([pd.read_csv(f) for f in metalabel_files])
+        metalabel_frame = pd.concat([pd.read_csv(f, header = None)
+                                     for f in metalabel_files],
+                                     ignore_index=True)
         self.metalabel_dict = {k: g.iloc[:,0].tolist()
         for k,g in metalabel_frame.groupby(metalabel_frame.iloc[:,1])}
 
