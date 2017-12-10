@@ -48,7 +48,7 @@ class Dataset(object):
         than max_missing_count will be filtered out
 
         metalabel_files (list): list of strings containing names of
-        metalabel files
+        metalabel files in data_folder
 
         token_file (str): name of .txt file which contains API token
     """
@@ -203,6 +203,15 @@ class Dataset(object):
 
 
     def parse_metalabel_files(self, metalabel_files):
+
+        """ Parse user-defined metalabel files and construct a dictionary
+        of the metalabels and their corresponding features
+
+        Args:
+            metalabel_files (list/str): list of strings or a single string
+            containing paths to metalabel files
+        """
+
         if isinstance(metalabel_files, str):
             metalabel_files = [metalabel_files]
         metalabel_frame = pd.concat([pd.read_csv(f, header = None)
@@ -213,6 +222,15 @@ class Dataset(object):
 
 
     def add_metalabels(self, selected_metalabels):
+
+        """ Add features, corresponding to specified metalabels, to dataset
+
+        Args:
+            selected_metalabels (list/str): list of strings or a single string
+            containing the names of metalabels whose corresponding features
+            will be added to the dataset
+        """
+
         if isinstance(selected_metalabels, str):
             selected_metalabels = [selected_metalabels]
         for metalabel in selected_metalabels:
@@ -220,6 +238,14 @@ class Dataset(object):
 
 
     def add_features(self, selected_features):
+
+        """ Add specified features to dataset
+
+        Args:
+            selected_features (list/str): list of strings or a single string
+            containing the names of features which will be added to the dataset
+        """
+
         if isinstance(selected_features, str):
             selected_features = [selected_features]
         for feature in selected_features:
@@ -231,6 +257,15 @@ class Dataset(object):
 
 
     def drop_metalabels(self, selected_metalabels):
+
+        """ Drop features, corresponding to specified metalabels, from dataset
+
+        Args:
+            selected_metalabels (list/str): list of strings or a single string
+            containing the names of metalabels whose corresponding features
+            will be dropped from the dataset
+        """
+
         if isinstance(selected_metalabels, str):
             selected_metalabels = [selected_metalabels]
         for metalabel in selected_metalabels:
@@ -238,8 +273,17 @@ class Dataset(object):
 
 
     def drop_features(self, selected_features):
+
+        """ Drop specified features from dataset
+
+        Args:
+            selected_features (list/str): list of strings or a single string
+            containing the names of features which will be dropped from
+            the dataset
+        """
+
         if isinstance(selected_features, str):
-            selected_metalabels = [selected_features]
+            selected_features = [selected_features]
         for feature in selected_features:
             if feature in self.features_list:
                 self.features_list.remove(feature)
@@ -249,6 +293,11 @@ class Dataset(object):
 
 
     def print_dataset_features(self):
+
+        """ Print features that are currently included in the dataset
+            (i.e. self.frame)
+        """
+
         if not self.frame.columns:
             print('No features were selected.')
         else:
@@ -256,11 +305,24 @@ class Dataset(object):
 
 
     def print_unused_features(self):
-        available_features = list(self.frame.columns)
-        print(set(available_features) - set(self.features_list))
+
+        """ Print all available features that are currently not included
+            in the dataset (i.e. self.frame)
+        """
+
+        print(set(self.all_data.columns) - set(self.frame.columns))
 
 
     def print_metalabel_features(self, selected_metalabels):
+
+        """ Print all features corresponding to the specified metalabels
+
+        Args:
+            selected_metalabels (list/str): list of strings or a single string
+            containing the names of metalabels whose corresponding features
+            will be printed
+        """
+
         if isinstance(selected_metalabels, str):
             selected_metalabels = [selected_metalabels]
         if hasattr(self, 'metalabel_dict'):
@@ -271,15 +333,37 @@ class Dataset(object):
 
 
     def print_missingness(self):
+
+        """ Print percentage of missing values in each column of the dataset
+            (i.e. self.frame)
+        """
+
         print(self.frame.isnull().sum()/self.frame.shape[0]*100)
 
 
     def filter_data(self):
+
+        """ filter_data is a helper function which creates the dataset
+            based on the set of metlabels and features provided by the user
+        """
+
         self.frame = self.all_data[self.features_list]
 
 
     def visualize_missingness(self, output_directory,
                                     fig_name = 'missingness.png'):
+
+        """ Visualize the distribution of missing data in the dataset using
+            the missingno library
+
+        Args:
+            output_directory (str): specifies the path to the folder
+            where the user wants to save the figure
+
+            fig_name (str): specifies the name of the figure which
+            will be stored in the specified output_directory
+        """
+
         plt.figure()
         fig = msno.matrix(self.frame,inline=False)
         if not os.path.exists(output_directory):
@@ -288,6 +372,16 @@ class Dataset(object):
 
 
     def drop_missing_cols(self, missingness_threshold):
+
+        """ Drop the columns with a smaller percentage of missing values
+            than the specified missingness_threshold
+
+        Args:
+            missingness_threshold (float): a real number between 0 and 1
+            which specifies the maximum tolerable percentage of missingness
+            values in a column of data
+        """
+
         missingness = self.frame.isnull().sum(axis=0)/self.frame.shape[0]
         drop_indexes = [i for i, m in enumerate(missingness)
         if m > missingness_threshold]
@@ -295,12 +389,28 @@ class Dataset(object):
 
 
     def drop_missing_rows(self, max_missing_count):
+
+        """ Drop the rows with a larger number of missing values
+            than the specified max_missing_count
+
+        Args:
+            max_missing_count (int): an integer between 0 and the number
+            of columns in the dataset which specifies the maximum tolerable
+            number of missing values in a row of the dataset
+        """
+
         drop_indexes = [i for i, m in enumerate(self.frame.isnull().sum(axis=1))
         if m > max_missing_count]
         self.frame.drop(self.frame.index[drop_indexes],axis=0,inplace=True)
 
 
 def impute_missing(dataset_object):
+
+    """ Uses a k-nearest neighbors algorithm with k = 5 to impute
+        missing predictor values and the missing outcome variable
+        if it is available
+    """
+
     if hasattr(dataset_object,'class_label'):
         temp_data = dataset_object.frame.join(dataset_object.class_label)
         temp_data = KNN(k=5).complete(temp_data)
@@ -319,6 +429,11 @@ def impute_missing(dataset_object):
 
 
 def normalize_data(dataset_object):
+
+    """ Normalizes the data by removing the mean and scaling each column
+        to unit variance
+    """
+
     temp_data = \
     StandardScaler().fit(dataset_object.frame).transform(dataset_object.frame)
     dataset_object.frame = pd.DataFrame(data=temp_data,
