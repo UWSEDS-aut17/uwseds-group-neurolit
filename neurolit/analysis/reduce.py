@@ -10,6 +10,16 @@ sns.set()
 
 
 def perform_pca(dataset_object):
+
+    """ Peform PCA and return both the "model" and the transformed data.
+        Note that pca_data returns number of components equal to the number
+        of features/columns of data
+
+    Args:
+        dataset_object (Dataset): Dataset object is created using the
+        Dataset class in dataset.py
+    """
+
     pca = PCA().fit(dataset_object.frame)
     pca_data = pca.transform(dataset_object.frame)
     pca_data = pd.DataFrame(data=pca_data,
@@ -19,6 +29,18 @@ def perform_pca(dataset_object):
 
 
 def extract_pca_components(pca_data, n_components = 2):
+
+    """ Extract specified number of principal components from pca_data
+        created using the perform_pca function
+
+    Args:
+        pca_data (DataFrame): Pandas DataFrame object containing number
+        of principal components equal to the number of data columns/features
+
+        n_components (int): Number of pca components to be extracted from
+        original pca_data
+    """
+
     pca_data = pd.DataFrame(data=pca_data.iloc[:,:n_components],
                             index = pca_data.index)
 
@@ -28,6 +50,19 @@ def extract_pca_components(pca_data, n_components = 2):
 #Plot of dataset variance captured by n principal components
 def pca_variance_plot(pca, output_directory,
                            fig_name = 'PCAVariancePlot.png'):
+
+    """ Visualize the percent variance caputred vs number of principal
+        components
+
+    Args:
+        pca (PCA): PCA object created using scikit-learn in the perform_pca
+        function
+
+        output_directory (str): output directory to place the figure in
+
+        fig_name (str): name of figure to be placed in output_directory
+    """
+
     plt.figure()
     plt.plot((1- pca.explained_variance_ratio_), linewidth = 2)
     plt.axis('tight')
@@ -42,6 +77,18 @@ def pca_variance_plot(pca, output_directory,
 #2D scatter plot of first and second PCA components
 def pca_2D_scatter(pca_data, output_directory,
                             fig_name = 'PCA2DScatter.png'):
+
+    """ Visualize the first two principal components
+
+    Args:
+        pca_data (DataFrame): Pandas DataFrame object containing number
+        of principal components equal to the number of data columns/features
+
+        output_directory (str): output directory to place the figure in
+
+        fig_name (str): name of figure to be placed in output_directory
+    """
+
     plt.figure()
     plt.scatter(pca_data.iloc[:,0], pca_data.iloc[:,1])
     plt.title("First two PCA directions")
@@ -55,6 +102,18 @@ def pca_2D_scatter(pca_data, output_directory,
 #3D scatter plot of first, second and third PCA components
 def pca_3D_scatter(pca_data, output_directory,
                             fig_name = 'PCA3DScatter.png'):
+
+    """ Visualize the first three principal components
+
+    Args:
+        pca_data (DataFrame): Pandas DataFrame object containing number
+        of principal components equal to the number of data columns/features
+
+        output_directory (str): output directory to place the figure in
+
+        fig_name (str): name of figure to be placed in output_directory
+    """
+
     fig = plt.figure()
     ax = fig.add_subplot(111, projection = '3d')
     ax.scatter(pca_data.iloc[:,0], pca_data.iloc[:,1], pca_data.iloc[:,3])
