@@ -24,11 +24,6 @@ Our group aims to implement machine learning to examine the relationship between
 *Install Neurolit*
 `pip install neurolit`
 
-**Or**
-
-*Install necessary dependencies using setup.py file*
-`python setup.py install`
-
 ## The Data
 Data is stored in a UW accessible repository via
 ![RedCap](https://github.com/UWSEDS-aut17/uwseds-group-neurolit/blob/master/Images/redcap-logo-medium.png)
