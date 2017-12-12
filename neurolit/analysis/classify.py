@@ -67,12 +67,22 @@ class Classifier(object):
 
 
     def classify_random_forest(self):
+
+        """ Train a random forest classifier and predict outcomes on the test
+            data
+        """
+
         self.model = RandomForestClassifier(random_state=0, n_jobs=2)
         self.model.fit(self.X_train, self.y_train)
         self.y_pred = self.model.predict(self.X_test)
 
 
     def classify_logistic_regression(self):
+
+        """ Train a logistic regression classifier and predict outcomes on the
+            test data
+        """
+
         self.model = LogisticRegression(random_state=0)
         self.model.fit(self.X_train, self.y_train)
         self.y_pred = self.model.predict(self.X_test)
@@ -80,6 +90,11 @@ class Classifier(object):
 
     def plot_confusion_matrix(self, output_directory,
                                     fig_name = 'confusionMatrix.png'):
+
+        """ Plot a confusion matrix which shows the performance of the
+            ML model on the test data
+        """
+
         mat = confusion_matrix(self.y_test, self.y_pred)
         plt.figure()
         sns.heatmap(mat.T, square=True, annot=True, fmt='d', cbar=False)
