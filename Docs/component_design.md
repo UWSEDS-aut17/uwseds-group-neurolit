@@ -2,42 +2,51 @@
 
 | Component | Justification |
 | :--------------: | :-------------: |
-| FetchData | Necessary for data curation in all use cases |
-| ExtractVar | Necessary for data curation, variable selection for all use cases |
-| VisualizeIt | Necessary for visualizations in each use case to illustrate relationships |
-| ValidateIt | Implements training and tests sets to bring power to results in all use cases |
+| Dataset | Necessary for data curation, variable selection for all use cases |
+| Classify | Necessary for curating data prior to analysis |
+| Reduce | Necessary for dimensionality reduction methods |
+| dash_visualize.ipynb | Necessary for visualizations in each use case to illustrate relationships |
+| predict.ipynb | Necessary for providing a UI for visualizing ML applications |
+| tests_analysis | Necessary for testing the functionality of the analysis functions |
+| tests_base | Necessary for testing the functionality of the data curation functions |
 
-
-Name, FetchData
+Name, Dataset
 - pulls datasets from repository and converts to python dataFrame for use in analysis
-- Inputs: none
-- Outputs: two python dataFrames
+- Inputs: data location string, output folder string, selected features str, selected metalabels str, outcome variable str, missingness threshold float, max missing count int, metalabel_files list
+- Outputs: Dataset Classifier object
 - PseudoCode:
-	- url1 = x, url2 = y
-	- pull data from urls
-	- convert data to python dataFrames
+	- set parameters for data extraction
+	- pull data from database using API token
+	- convert data to python dataFrame and sift based on user specifications
 
-Name, ExtractVar
-- asks user for variables of interest from each dataset to perform analysis
-- Inputs: string array (survey variable names), string array (quant variable name)
-- Outputs: dataFrame, condensed
+Name, Classify
+- curates data prior to analysis
+- Inputs: datase object, pca dataframe, percent training float, model type string
+- Outputs: Dataset Classifier object, visualizations
 - PseudoCode:
-	- ask user for survey variables
-	- ask user for quant variables
-	- condense 2 dataFrame objects to one condensed dataFrame with variables of interest for all those with complete data
+	- input specifications
+	- run variety of classification techniques based on those specifications
+	
+Name, Reduce
+-performs dimensionality reduction algorithms
+-Inputs: Dataset Classifier object, pca specifications
+-Outputs: Dataset classifier object, visualizations
+-PseudoCode:
+	- input specifications
+	- run variety of dimensionality reduction techniques based on those specifications	-
 
-Name, VisualizeIt
-- asks user for desired plot depending on data used, and output is a visualization
-- Inputs: string
-- Outputs: figure (format TBD)
+Name, dash_visualize.ipynb
+- run script to open dash app visualization tool
+- Inputs: Dataset function specifications
+- Outputs: dash app
 - PseudoCode:
-	- asks user for desired plotting style depending on the inclusion of neuroimaging data, qualitative data, or ML data.
+	- run dataset function
+	- opens visualization tool
 
-Name, ValidateIt
-- performs data validation by dividing data into training and test data, testing via cross-validation
-- Inputs: none
-- Outputs: final model fit
+Name, predict.ipynb
+- performs ML algorithms and displays visualizations
+- Inputs: dataset function specifications
+- Outputs: inline visualizations
 - PseudoCode
-	- divides data into test data and training data
-	- performs cross-validation (method TBD)
-	- output best model fit
+	- input dataset specifications
+	- run NeuroLit functions and display results
