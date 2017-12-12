@@ -22,7 +22,7 @@ Our group aims to implement machine learning to examine the relationship between
 `git clone https://github.com/UWSEDS-aut17/uwseds-group-neurolit.git`
 
 *Install Neurolit*
-`pip install neurolit`
+`pip install NeuroLit`
 
 ## The Data
 Data is stored in a UW accessible repository via
