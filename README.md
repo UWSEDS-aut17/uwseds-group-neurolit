@@ -11,8 +11,6 @@ Our group aims to implement machine learning to examine the relationship between
 
 *A project repository for CSE583: Software Engineering for Data Scientisits, Autumn 2017*
 
-
-
 **Questions posed:**
 * Can we create a tool that will produce fast, easy, and presentation-worthy visualizations of relationships in our data?
 * Using our survey data, do parent perceptions of reading difficulty correlate with assessed reading skill?
@@ -25,6 +23,8 @@ Our group aims to implement machine learning to examine the relationship between
 
 *Install Neurolit*
 `pip install neurolit`
+
+**Or**
 
 *Install necessary dependencies using setup.py file*
 `python setup.py install`
