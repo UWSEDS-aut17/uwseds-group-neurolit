@@ -28,10 +28,10 @@ Name, Classify
 	- run variety of classification techniques based on those specifications
 	
 Name, Reduce
--performs dimensionality reduction algorithms
--Inputs: Dataset Classifier object, pca specifications
--Outputs: Dataset classifier object, visualizations
--PseudoCode:
+- performs dimensionality reduction algorithms
+- Inputs: Dataset Classifier object, pca specifications
+- Outputs: Dataset classifier object, visualizations
+- PseudoCode:
 	- input specifications
 	- run variety of dimensionality reduction techniques based on those specifications	-
 
