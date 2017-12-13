@@ -16,15 +16,14 @@
 
 # Use Cases:
 
-1. look at relationships in the data between variables
+# 1. Look at relationships in the data between variables
     - API pulls data from RedCap
     - allows user to select multiple variables/features of interest
-2. use machine learning to predict outcomes from variables in our data
+# 2. Use machine learning to predict outcomes from variables in our data
     - performs dimentionality reduction and normalization of data
     - performs classification
     - builds model
     - uses model to estimate prediction
-3. visualize results 
+# 3. Visualize results 
     - allows user to visualize relationships between chosen variables or interest interactivly from web application
     - allows visulaization of outcome predictions
-
