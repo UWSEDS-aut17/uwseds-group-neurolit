@@ -34,3 +34,4 @@ Data was collected by researchers at the [Institute for Learning & Brain Science
 
 ![UW RDRP](https://github.com/UWSEDS-aut17/uwseds-group-neurolit/blob/master/Images/uw_rdrp_660.png)
 
+*Data is shared with permission of the research participants in accordance with the UW IRB*
