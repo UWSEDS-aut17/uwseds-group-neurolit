@@ -5,7 +5,6 @@ WJ Letter Word ID,WJ
 WJ Word Attack,WJ
 WJ Oral Reading,WJ
 WJ Sentence Reading Fluency,WJ
-WJ Math Facts Fluency,WJ
 WJ Basic Reading Skills,WJ
 WJ Reading Fluency,WJ
 TOWRE Sight Word Efficiency,TOWRE
@@ -18,9 +17,27 @@ CTOPP Elision,CTOPP
 CTOPP Blending Words,CTOPP
 CTOPP Phoneme Isolation,CTOPP
 CTOPP Memory for Digits,CTOPP
-CTOPP Nonword Repetition,CTOPP
 CTOPP Rapid Digit Naming,CTOPP
 CTOPP Rapid Letter Naming,CTOPP
 CTOPP Phonological Awareness,CTOPP
-CTOPP Phonological Memory,CTOPP
 CTOPP Rapid Naming,CTOPP
+WJ Letter Word ID,ALL
+WJ Word Attack,ALL
+WJ Oral Reading,ALL
+WJ Sentence Reading Fluency,ALL
+WJ Basic Reading Skills,ALL
+WJ Reading Fluency,ALL
+TOWRE Sight Word Efficiency,ALL
+TOWRE Phonemic Decoding Efficiency,ALL
+TOWRE Index,ALL
+WASI Vocabulary,ALL
+WASI Matrix Reasoning,ALL
+WASI Full Scale 2,ALL
+CTOPP Elision,ALL
+CTOPP Blending Words,ALL
+CTOPP Phoneme Isolation,ALL
+CTOPP Memory for Digits,ALL
+CTOPP Rapid Digit Naming,ALL
+CTOPP Rapid Letter Naming,ALL
+CTOPP Phonological Awareness,ALL
+CTOPP Rapid Naming,ALL

@@ -86,6 +86,7 @@ class Classifier(object):
         self.model = LogisticRegression(random_state=0)
         self.model.fit(self.X_train, self.y_train)
         self.y_pred = self.model.predict(self.X_test)
+        self.y_score = self.model.fit(self.X_train, self.y_train).decision_function(self.X_test)
 
 
     def plot_confusion_matrix(self, output_directory,

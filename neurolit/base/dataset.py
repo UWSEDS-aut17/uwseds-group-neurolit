@@ -149,7 +149,6 @@ class Dataset(object):
              'redcap_event_name':'Event', 'wj_lwid_ss':'WJ Letter Word ID',
              'wj_wa_ss':'WJ Word Attack', 'wj_or_ss':'WJ Oral Reading',
              'wj_srf_ss':'WJ Sentence Reading Fluency',
-             'wj_mff_ss':'WJ Math Facts Fluency',
              'wj_brs':'WJ Basic Reading Skills', 'wj_rf':'WJ Reading Fluency',
              'twre_swe_ss':'TOWRE Sight Word Efficiency',
              'twre_pde_ss':'TOWRE Phonemic Decoding Efficiency',
@@ -159,11 +158,9 @@ class Dataset(object):
              'ctopp_bw_ss':'CTOPP Blending Words',
              'ctopp_pi_ss':'CTOPP Phoneme Isolation',
              'ctopp_md_ss':'CTOPP Memory for Digits',
-             'ctopp_nr_ss':'CTOPP Nonword Repetition',
              'ctopp_rd_ss':'CTOPP Rapid Digit Naming',
              'ctopp_rl_ss':'CTOPP Rapid Letter Naming',
              'ctopp_pa':'CTOPP Phonological Awareness',
-             'ctopp_pm':'CTOPP Phonological Memory',
              'ctopp_rapid':'CTOPP Rapid Naming'}, inplace=True)
 
         survey_data.rename(columns={'record_id':'ID',
@@ -179,6 +176,20 @@ class Dataset(object):
             'music_ed':'Music Education',
             'music_training':'Music Training'}, inplace=True)
 
+        #add boolean variable for perceived reading Skill
+        reading_bool = survey_data['Perceived Reading Skill']
+        for sub in survey_data.index:
+            try:
+                if survey_data.loc[:,'Perceived Reading Skill'][sub] <= 50:
+                    reading_bool[sub] = 1
+                elif survey_data.loc[:,'Perceived Reading Skill'][sub] > 50:
+                    reading_bool[sub] = 0
+            except(KeyError):
+                print(sub, 'does not exist')
+            else:
+                pass
+        survey_data['Perceived Reading Skill Bool'] = reading_bool
+        
         self.all_data = reading_data.set_index('ID').\
         join(survey_data.set_index('ID'),
         lsuffix='_reading', rsuffix='_survey')
