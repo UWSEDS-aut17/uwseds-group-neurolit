@@ -26,6 +26,18 @@ Our group aims to implement machine learning to examine the relationship between
 
 *Email Patrick to Request an API Token* `pdonne(AT)uw(dot)edu`
 
+## Quick Start Guide
+
+1. Run the dash_visualization notebook to open our interactable visualization app powered by Dash
+
+    a. Choose predictor variables and an outcome variable to explore the data!
+    
+2. Open the predict notebook, customize the variables using the inline instructions, and run it
+
+    b. Use our machine learning narrative to illustrate the power and validity of the reading measures
+    
+3. Check out the examples in the examples folder for inspiration!
+
 ## The Data
 Data is stored in a UW accessible repository via
 ![RedCap](https://github.com/UWSEDS-aut17/uwseds-group-neurolit/blob/master/Images/redcap-logo-medium.png)
